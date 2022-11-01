@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Golden Plains - Demo";
+    src: url("../assets/Golden\ Plains\ -\ Demo.ttf");
+}
+
+@font-face {
+    font-family: "aflfont";
+    src: url("../assets/aflfont.TTF");
+}
+
+body{
+    font-family: "aflfont";
+    background: black;
+}
+
+.navbar{
+    background-color: rgba(0, 0, 0, 0.479)
+}
+
+.banner{
+    background-size:cover;
+    background-position: center;
+    height: 700px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url("../assets/img/bannerPY.jpg");
+}
+.nav-link{
+    color:white
+}
+
+nav{
+    color: white;
+    font-family: "Golden Plains - Demo";
+    font-size: 25px;
+}
+
+.tituloHeader{
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    padding-top: 100px;
+}
+.parrafo p{
+    font-size: 20px;
+    color: white;
+}
+
+.avatar{
+    border-radius: 30px 30px 30px 30px;
+    filter: grayscale(100%);
+}
+
+a{
+    color: white;
+}
+
+.nav-link:hover{
+    color: rgb(107, 91, 47);
+}
+
+a:hover{
+    color: rgb(107, 91, 47);
+}
+
+
+.alert-success {
+    color: #88560b;
+    background-color: #000000;
+    border-color: #badbcc00;
+}
+
+.post-heading h1{
+    color: white;
+    font-size: 70px;
+}
+span{
+    color: white;
+}
+
+.post-title-escritos{
+    font-size: 60px;
+}

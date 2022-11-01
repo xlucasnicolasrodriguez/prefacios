@@ -1,0 +1,56 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <div class="tituloHeader">
+        <span class='subheading'>Edita Tu Usuario</span>
+    </div>
+    <div class="parrafo">
+        <p>En esta seccion podras cambiar tu nombre de usuario</p>
+    </div>
+{% endblock %}
+
+{% block contenido_principal %}
+
+    {% if editForm.errors %}
+
+        <p style='color: red; text-align: center'>¡Datos incorrectos!</p>
+
+    {% endif %}
+<br>
+<br>
+<br>
+    <div class='mb-4'>
+        <div class='container px-4 px-lg-5'>
+            <p>Username: {{user.username}}</p>
+            <p>Mail: {{user.email}}</p> 
+            <p>Nombre: {{user.first_name}}</p>
+            <p>Apellido: {{user.last_name}}</p>
+        </div>
+    </div>
+
+        <div class='mb-4'>
+            <div class='container px-4 px-lg-5'>
+                <br>
+                <br>
+                <form class='form-group text-center' action='' method='POST'>{% csrf_token %}
+                    <table class='table'>
+                        {{editForm.as_p}}
+                    </table>
+                    <input type='submit' value='EDITAR' class='btn btn-dark'>
+                    <button type='button' class='btn btn-dark position-relative'>
+                        <a href='{% url "listaPosteos" %}' style='color: white;'>IR A INICIO</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

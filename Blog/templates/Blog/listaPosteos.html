@@ -1,0 +1,82 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+    <div class="tituloHeader">
+        <span class='subheading'>ESCRITOS</span>
+    </div>
+    <div class="parrafo">
+        <p>Aca podrás subir tu historia en nuestra web. Interactuar con los escritos de distintos usuarios, editarlos y borrarlos. Como biblioteca abierta tenemos la filosofia de que cualquier porcion de texto que puedas leer en este espacio, nos pertenece a todos, y desafiamos a la practica del respeto y cuidado mutuo entre todas nuestras memorias escritas en PREFACIO.</p>
+        <p></p>
+    </div>
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                <button type='button' class='btn btn-dark mb-3'>
+                    <a href='{% url "hacerPosteo" %}' style='color: white;'>ESCRIBE TU HISTORIA</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block contenido_principal %}
+
+<br>
+<br>
+{%if listadoPosteos  %}
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                {% for posteo in listadoPosteos %}
+                    <div class='post-preview'>
+                        <a href='{% url "Posteo" posteo.titulo%}'>
+                            <h2 class='post-title'>{{posteo.titulo}}</h2>
+                        </a>
+                        <p class='post-meta'>
+                            Posteado por
+                            <span>{{posteo.autor}}</span>
+                            {{posteo.fecha}}
+                        </p>
+                        <br>
+                        <div class="img-post">
+                            <img class="avatar" src="{{posteo.imagen.url}}" width="400px" alt="">
+                        </div>
+                        <br>
+                    </div>
+                    <button type='button' class='btn btn-dark'>
+                        <a href='{% url "Posteo" posteo.titulo %}' style='color: white;'>VER</a>
+                    </button>
+                    <button type='button' class='btn btn-dark'>
+                        <a href='{% url "editarPosteo" posteo.titulo %}' style='color: white;'>EDITAR</a>
+                    </button>
+                    <button type='button' class='btn btn-dark'>
+                        <a href='{% url "borrarPosteo" posteo.titulo %}' style='color: white;'>BORRAR</a>
+                    </button>
+                    <!-- Divider-->
+                    <hr class='my-4' />
+                {% endfor %}
+                <button type='button' class='btn btn-dark mb-3'>
+                    <a href='{% url "hacerPosteo" %}' style='color: white;'>ESCRIBE TU HISTORIA</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% else %}
+<br>
+<br>
+    <h1>NO HAY ESCRITOS</h1>
+    <button type='button' class='btn btn-dark mb-3'>
+        <a href='{% url "hacerPosteo" %}' style='color: white;'>ESCRIBE TU HISTORIA</a>
+    </button>
+    <br>
+    <br>
+{% endif %}
+{% endblock %}

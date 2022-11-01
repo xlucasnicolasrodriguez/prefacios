@@ -1,0 +1,85 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <div class="tituloHeader">
+        <span class='subheading'>BUSCADOR</span>
+    </div>
+    <div class="parrafo">
+        <p>En el buscador de abajo podras encontrar por titulo la historia que desees</p>
+    </div>
+    <form action='/Blog/buscar' method='GET'>
+        <div class='form-floating'>
+            <input class='form-control' type='text' name='titulo' placeholder='Ingrese un título...'>
+            <label for='titulo'>Título</label>
+        </div>
+        <input type='submit' value='BUSCAR' class='btn btn-dark mt-3'>
+        <button type='button' class='btn btn-dark position-relative mt-3 mx-2'>
+            <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+        </button>
+    </form>
+
+{% endblock %}
+
+{% block contenido_principal %}
+<!--     <br>
+    <br>
+    <main class='mb-3'>
+        <div class='container px-4 px-lg-5'>
+            <div class='row gx-4 gx-lg-5 justify-content-center'>
+                <div class='col-md-10 col-lg-8 col-xl-7'>
+                    <h2>BUSCA LA HISTORIA POR TITULO:</h2>
+                    <br>
+                    <form action='/Blog/buscar' method='GET'>
+                        <div class='form-floating'>
+                            <input class='form-control' type='text' name='titulo' placeholder='Ingrese un título...'>
+                            <label for='titulo'>Título</label>
+                        </div>
+                        <input type='submit' value='BUSCAR' class='btn btn-dark mt-3'>
+                        <button type='button' class='btn btn-dark position-relative mt-3 mx-2'>
+                            <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                        </button>
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </main> -->
+
+{% if error %}
+
+    <p style='color: red; text-align: center'>{{error}}</p>
+
+{% endif %}
+
+{% if posteo %}
+    <br>
+    <br>
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                <div class='card mb-5'>
+                    <div class='card-body'>
+                        <div class='small text-muted'>{{posteo.fecha}}</div>
+                        <h2 class='card-title'>{{posteo.titulo}}</h2>
+                        <p class='card-text'>{{posteo.autor}}</p>
+                        <a class='btn btn-dark' href='{% url "Posteo" posteo.titulo%}'>LEER →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}

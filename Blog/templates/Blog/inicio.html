@@ -1,0 +1,69 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block titulo_header %}
+    <div class="tituloHeader">
+        <span class='subheading'>Prefacio</span>
+    </div>
+    <div class="parrafo">
+        <p>Comenza tu historia o continua la de otra persona</p>
+        <p></p>
+    </div>
+{% endblock %}
+
+{% block contenido_principal %}
+<br>
+<br>
+{%if listadoPosteos  %}
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                {% if user.is_authenticated %}
+                <h1 class='alert alert-success text-center'>{{mensaje}}</h1>
+                {% endif %}
+                <h1 class='post-title post-title-escritos text-center text-decoration-underline'>ESCRITOS</h1>
+                <br>
+                <br>
+                    {% for posteo in listadoPosteos %}
+                        <div class='post-preview'>
+                            <a href='{% url "Posteo" posteo.titulo%}'>
+                                <h2 class='post-title'>{{posteo.titulo}}</h2>
+                            </a>
+                            <p class='post-meta'>
+                                Posteado por
+                                <span>{{posteo.autor}}</span>
+                                {{posteo.fecha}}
+                            </p>
+                            <br>
+                            <div class="img-post">
+                                <img class="avatar" src="{{posteo.imagen.url}}" width="400px" alt="">
+                            </div>
+                            <br>
+                        </div>
+                        <hr class='my-4' />
+                    {% endfor %}
+                <button type='button' class='btn btn-dark position-relative mb-3'>
+                    <a href='{% url "listaPosteos" %}' style='color: white;'>ESCRIBE TU HISTORIA</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% else %}
+<br>
+<br>
+<div class='container px-4 px-lg-5'>
+    <div class='row gx-4 gx-lg-5 justify-content-center'>
+        <div class='col-md-10 col-lg-8 col-xl-7'>
+            <h1>NO HAY ESCRITOS</h1>
+            <button type='button' class='btn btn-dark mb-3'>
+                <a href='{% url "hacerPosteo" %}' style='color: white;'>ESCRIBE TU HISTORIA</a>
+            </button>
+        </div>
+    </div>
+</div>
+    <br>
+    <br>
+{% endif %}
+
+{% endblock %}

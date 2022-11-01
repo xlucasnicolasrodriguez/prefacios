@@ -1,0 +1,46 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+<div class="tituloHeader">
+    <span class='subheading'>Inicia Sesión</span>
+</div>
+<div class="parrafo">
+    <p></p>
+</div>
+
+{% endblock %}
+
+{% block contenido_principal %}
+<br>
+<br>
+    <div class='mb-4'>
+        <div class='container px-4 px-lg-5'>
+            <form class='form-group text-center' action='' method='POST'>{% csrf_token %}
+                <table class='table'>
+                    {{form.as_p}}
+                </table>
+                {% if errors %}
+                    {% for error in errors %}
+                        <p style='margin-top: -32px;' class='alert alert-danger'>{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+                <input type='submit' value='INICIAR SESIÓN' class='btn btn-dark'>
+                <p>¿No tenés una cuenta? !Registrate ahora!</p>
+                <a class='btn btn-dark' href='{% url "Register" %}'>CREAR CUENTA</a>
+                <button type='button' class='btn btn-dark position-relative mx-2'>
+                    <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

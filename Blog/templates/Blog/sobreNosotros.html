@@ -1,0 +1,47 @@
+{% extends 'Blog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <div class="tituloHeader">
+        <span class='subheading'>Quienes Somos</span>
+    </div>
+    <div class="parrafo">
+        <p>El sitio surgio como idea para el proyecto final de CoderHouse bajo la consigna de crear un blog utilizando las herramientas aprendidas en el curso de Python de dicha plataforma.</p>
+        <p></p>
+    </div>
+{% endblock %}
+
+{% block contenido_principal %}
+<br>
+<br>
+    <main class='mb-4'>
+        <div class='container px-4 px-lg-5'>
+            <div class='row gx-4 gx-lg-5 justify-content-center'>
+                <div class='col-md-10 col-lg-8 col-xl-7'>
+                    <h1>Lucas Nicolás Rodríguez</h1>
+                    <p>Este último año decidí profesionalizar mis hobbies y habilidades dentro del mundo de la programación para hacer de ello mi ocupación, y me converti en desarrollador FrontEnd. 
+                    Soy una persona curiosa y autodidacta; no me basta con seguir la receta, también quiero comprender el porqué del paso a paso, y entiendo que ese es el camino para convertir cualquier problema en solución.
+                    Viví el cambio de paradigma de lo análogo a lo digital, por eso estoy convencido de que el futuro de la tecnología está relacionado con el desarrollo de la blockchain.</p>
+                    <br>
+                    <h1> Lucas Golé</h1>
+                    <p>Marplatense. Del 94. Hincha de Boca. Apasionado del Cine y Series. Ingresando en el mundo de la programacion, estudiando, investigando y aprendiendo. Siempre intento hacer lo que me gusta y lo que me interesa, buscando lo que me genere satisfaccion y logrando objetivos. Avanzando con el mundo hacia el futuro.</p>
+                    <br>
+                    <h1> Lucas Barreiro</h1>
+                    <p>Uruguayo, economista, hincha de Nacional. 26 años. Intentando ingresar al mundo de la programación para tener más herramientas para desarrollarme y acceder al mundo laboral.</p>
+                    <button type='button' class='btn btn-dark position-relative mt-3'>
+                        <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
